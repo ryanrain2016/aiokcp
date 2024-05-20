@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "wheel", "Cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiokcp"
+version = "0.0.1"
+authors = [
+  { name="ryanrain2016", email="holidaylover2010@gmail.com" },
+]
+description = "KCP for asyncio and socketserver, based on kcp"
+readme = "README.md"
+
+requires-python = ">=3.8"
+keywords=["asyncio", "kcp", "socket", "aio", "aiokcp"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+crypto = ["cryptography"]
+
+[project.urls]
+Homepage = "https://github.com/ryanrain2016/aiokcp"
+Issues = "https://github.com/ryanrain2016/aiokcp/issues"
+
+[tool.setuptools.exclude-package-data]
+aiokcp = ["*.c"]
