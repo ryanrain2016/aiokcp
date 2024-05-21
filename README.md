@@ -4,6 +4,12 @@
 ## 什么是KCP？
 KCP是一个致力于低延时的基于UDP自动重传的可靠传输协议。本身不包含任何网络传输的功能，使用回调的方式处理udp数据包的传输。详情见[kcp](https://github.com/skywind3000/kcp)
 
+## 如何安装
+`aiokcp`是基于cython绑定调用的kcp库，打包可能需要安装平台的编译工具。windows系统需要安装`vsbuilder`，linux系统需要安装`gcc`。安装完成后，可以通过`pip`安装
+```bash
+pip install aiokcp
+```
+
 ## 例子
 例子详见`aiokcp/examples`目录
 ### asyncio 低级接口
