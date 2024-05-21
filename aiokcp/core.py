@@ -2,7 +2,7 @@ import asyncio
 import logging
 import time
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 from .kcp import KCP
 from .utils import conv_bytes_to_id, random_id
@@ -113,7 +113,7 @@ class KCPStreamTransport(asyncio.Transport):
             for data in self.kcp.get_all_received():
                 self.protocol.data_received(data)
 
-    def write(self, data: bytes | bytearray | memoryview) -> None:
+    def write(self, data: Union[bytes, bytearray, memoryview]) -> None:
         if not data or self.is_closing():
             return
         data = bytes(data)

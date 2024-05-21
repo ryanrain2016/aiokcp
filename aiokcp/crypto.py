@@ -14,7 +14,7 @@ try:
         return Fernet(base64.urlsafe_b64encode(key))
 
     class CryptoWrapper:
-        def __init__(self, key, salt):
+        def __init__(self, key: bytes, salt: bytes):
             self._crypto = _get_crypto(key, salt)
 
         def encrypt(self, data):

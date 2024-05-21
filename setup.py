@@ -12,7 +12,6 @@ setup_extensions = [
 
 setup(
     name='aiokcp',
-    version='0.0.1',
     description='KCP for asyncio and socketserver, based on kcp',
     author='ryanrain2016',
     author_email='holidaylover2010@gmail.com',

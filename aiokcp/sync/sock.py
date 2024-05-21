@@ -3,7 +3,7 @@ import socket
 import threading
 import time
 from queue import PriorityQueue, Queue
-from typing import Optional
+from typing import Optional, Union
 
 from ..core import default_kcp_kwargs, default_timeout
 from ..kcp import KCP
@@ -321,13 +321,13 @@ class KCPSocket:
             self._recv_condition.wait_for(lambda: self._buffer or self._is_closing, 10)
         return self.recv_into(buffer, nbytes, flags)
 
-    def sendall(self, data: bytes | bytearray | memoryview, flags=0):
+    def sendall(self, data: Union[bytes, bytearray, memoryview], flags=0):
         while data:
             sent = self.send(data, flags)
             data = data[sent:]
         return
 
-    def send(self, data: bytes | bytearray | memoryview, flags=0):
+    def send(self, data: Union[bytes, bytearray, memoryview], flags=0):
         if self._is_closing:
             return 0
         data = bytes(data)
