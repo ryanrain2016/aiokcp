@@ -269,12 +269,14 @@ class _KCPServerUDPProtocol(asyncio.DatagramProtocol):
 
     def datagram_received(self, data, addr):
         if len(data) < 24:
+            # invalid data, drop it
             return
         if self.crypto is not None:
             try:
                 data = self.crypto.decrypt(data)
             except:
-                pass
+                # invalid data, drop it
+                return
         if addr in self._transport_map:
             transport = self._transport_map[addr]
         else:

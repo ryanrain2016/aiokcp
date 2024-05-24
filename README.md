@@ -9,6 +9,10 @@ KCP是一个致力于低延时的基于UDP自动重传的可靠传输协议。�
 ```bash
 pip install aiokcp
 ```
+如果需要数据包加密，可以选择安装`cryptography`
+```bash
+pip install aiokcp[crypto]
+```
 
 ## 例子
 例子详见`aiokcp/examples`目录
@@ -324,7 +328,7 @@ if __name__ == '__main__':
     thread_test()
 ```
 ### 可选的udp数据包加密
-内置的加密方法需要安装`cryptography`, 默认采用的aes+cbc模式加密。也可以自定义加密对象, 只需要实现`encrypt`和`decrypt`方法即可
+默认数据包不加密，但提供加密的方法和参数。内置的加密方法需要安装`cryptography`, 采用的aes+cbc模式加密+hmac校验。也可以自定义加密对象, 只需要实现`encrypt`和`decrypt`方法即可
 ```py
 from aiokcp import (create_connection, create_server, open_connection,
                     start_server)
